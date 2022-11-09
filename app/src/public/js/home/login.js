@@ -6,6 +6,10 @@ const id = document.querySelector("#id"),
 
 loginBtn.addEventListener("click", login);
 
-const login = () => {
-  console.log(id.value);
-};
+function login() {
+  const req = {
+    id: id.value,
+    psword: psword.value,
+  };
+  console.log(req);
+}
