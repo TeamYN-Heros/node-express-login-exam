@@ -5,16 +5,17 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 
-//앱 세팅
-app.set("views", "./views");
-app.set("view engine", "ejs");
-
 // 라우팅
-const homeRouter = require("./src/home");
+const homeRouter = require("./src/routes/home");
+
+//앱 세팅
+app.set("views", "./src/views");
+app.set("view engine", "ejs");
 
 //미들웨어
 app.use("/", homeRouter);
 app.use(morgan("dev"));
+app.use(express.static(`${__dirname}/src/public`));
 
 module.exports = app;
 
