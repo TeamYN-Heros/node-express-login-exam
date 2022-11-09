@@ -10,7 +10,7 @@ app.set("views", "./views");
 app.set("view engine", "ejs");
 
 // 라우팅
-const homeRouter = require("./routes/home");
+const homeRouter = require("./src/home");
 
 //미들웨어
 app.use("/", homeRouter);
