@@ -31,13 +31,21 @@ class UserStorage {
   }
   static getUserInfo(id) {
     const users = this.#users;
-    const idx = users.id.indexOf(id);
-    const usersKeys = Object.keys(users);
+    const idx = users.id.indexOf(id); // 입력한 아이디의 인덱스 값을 가져옴
+    const usersKeys = Object.keys(users); // #users 오브젝트의 key값을 열거 가능한 배열로 반환
     const userInfo = usersKeys.reduce((newUser, info) => {
       newUser[info] = users[info][idx];
       return newUser;
     }, {});
     return userInfo;
+  }
+
+  static save(userInfo) {
+    const users = this.#users;
+    users.id.push(userInfo.id);
+    users.name.push(userInfo.name);
+    users.psword.push(userInfo.psword);
+    return { success: true };
   }
 }
 
